@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envelope Opening Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        }
+        .envelope-container {
+            position: relative;
+            width: 380px;
+            height: 340px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #c49a6c;
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 20px;
+        }
+        .flap {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            background: #b08968;
+            top: 0;
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            transform-origin: top;
+            transition: transform 0.8s ease-in-out;
+            z-index: 3;
+        }
+        .letter {
+            position: absolute;
+            width: 90%;
+            height: 330px;
+            background: #fff;
+            border-radius: 5px;
+            text-align: center;
+            font-family: cursive;
+            padding: 20px;
+            transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
+            transform: translateY(-30px);
+            /* transform: translateX(08px); */
+            opacity: 0; 
+            z-index: 1;
+        }
+        .envelope-container.open .flap {
+            transform: rotateX(180deg);
+        }
+        .envelope-container.open .letter {
+            transform: translateY(-80px); /* Moves fully out of the envelope */
+            opacity: 5;
+            z-index: 4;
+        }
+        .envelopep{
+            font-size: 18px;
+
+        
+        }
+        .flap img{
+        
+            width: 100px;
+            height: 100px;  
+            padding-left: 180px;
+           padding-top: 155px;
+            z-index: 10;
+            opacity: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="envelope-container" onclick="toggleLetter()">
+        <div class="envelope">
+            <p class="envelopep">click to open </p>
+
+            <div class="flap"><img src="C:\Users\Dell\Downloads\Untitled design (56).png" alt="icon"></div>
+        </div>
+            <div class="letter">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit eveniet dolore accusantium neque voluptates rerum suscipit fuga, velit a necessitatibus illo aperiam repudiandae quas omnis similique vitae totam enim non. Neque nisi dicta totam aliquid id repellat aspernatur deleniti dolorem, alias praesentium, odit quisquam laborum a sit aperiam itaque reprehenderit.</p>
+            
+        </div>
+    </div>
+
+    <script>
+        function toggleLetter() {
+            document.querySelector('.envelope-container').classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>
